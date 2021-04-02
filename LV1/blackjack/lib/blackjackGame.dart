@@ -90,6 +90,10 @@ class BlackJackGame {
   String checkPlayerCards() {
     var playerCardValue = playerOne.getPlayerCardValue();
     var robotCardValue = playerTwo.getPlayerCardValue();
+    if (playerCardValue > 21 && robotCardValue > 21) {
+      hasGameEnded = true;
+      return 'Tie!';
+    }
     if (playerCardValue > 21) {
       hasGameEnded = true;
       return 'Robot Wins!';
@@ -102,6 +106,10 @@ class BlackJackGame {
     if (playerOne.getPlayersStoppedDrawing() == true &&
         playerTwo.getPlayersStoppedDrawing() == true) {
       hasGameEnded = true;
+      if (playerCardValue > 21 && robotCardValue > 21) {
+        hasGameEnded = true;
+        return 'Tie!';
+      }
       if (playerCardValue > robotCardValue) {
         return 'Player Wins stop';
       } else {

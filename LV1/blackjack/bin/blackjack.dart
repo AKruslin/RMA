@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:blackjack/blackjack.dart';
+import 'package:blackjack/blackjackGame.dart';
 
 void main(List<String> arguments) {
   var human = Player();
@@ -8,6 +8,11 @@ void main(List<String> arguments) {
   var game = BlackJackGame(human, robot);
   var blackJackCardDeck = game.blackJackCardDeck;
   print('Start game');
+  for (var i = 0; i < 2; i++) {
+    human.drawCard(blackJackCardDeck);
+    robot.drawCard(blackJackCardDeck);
+  }
+  print(game.showScore());
   while (!game.hasGameEnded) {
     if (human.getPlayersStoppedDrawing() != true) {
       print('Press 1 to draw card or anything else to pass:');
