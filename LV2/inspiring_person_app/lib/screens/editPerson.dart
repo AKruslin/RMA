@@ -1,22 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:inspiring_person_app/bloc/home_bloc.dart';
 import 'package:inspiring_person_app/models/inspiringPerson.dart';
 import 'package:inspiring_person_app/screens/home.dart';
 
-class InsertPersonScreen extends StatefulWidget {
+class EditPersonScreen extends StatefulWidget {
+  final InspiringPerson person;
+  const EditPersonScreen({
+    this.person,
+  });
   @override
-  _InsertPersonScreenState createState() => _InsertPersonScreenState();
+  _EditPersonScreenState createState() => _EditPersonScreenState();
 }
 
-class _InsertPersonScreenState extends State<InsertPersonScreen> {
-  String imageURL = "";
-  String description = "";
-  String quote = "";
-  DateTime birthday = DateTime.now();
+class _EditPersonScreenState extends State<EditPersonScreen> {
   @override
   Widget build(BuildContext context) {
+    InspiringPerson person = widget.person;
+    String imageURL = person.image;
+    String description = person.description;
+    String quote = person.quote;
+    DateTime birthday = person.birthday;
+    TextEditingController imageTextController =
+        TextEditingController(text: imageURL);
+    TextEditingController descriptionTextController =
+        TextEditingController(text: description);
+    TextEditingController quoteTextController =
+        TextEditingController(text: quote);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -32,6 +44,7 @@ class _InsertPersonScreenState extends State<InsertPersonScreen> {
         child: Column(
           children: [
             TextField(
+              controller: imageTextController,
               onChanged: (url) {
                 imageURL = url;
               },
@@ -41,13 +54,14 @@ class _InsertPersonScreenState extends State<InsertPersonScreen> {
               ),
             ),
             CalendarDatePicker(
-                initialDate: DateTime.now(),
+                initialDate: birthday,
                 firstDate: DateTime(1100),
                 lastDate: DateTime.now(),
                 onDateChanged: (date) {
                   birthday = date;
                 }),
             TextField(
+              controller: descriptionTextController,
               onChanged: (value) {
                 description = value;
               },
@@ -57,6 +71,7 @@ class _InsertPersonScreenState extends State<InsertPersonScreen> {
               ),
             ),
             TextField(
+              controller: quoteTextController,
               onChanged: (value) {
                 quote = value;
               },
@@ -70,25 +85,25 @@ class _InsertPersonScreenState extends State<InsertPersonScreen> {
               child: BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {
                   return ElevatedButton(
-                    onPressed: () {
-                      if (imageURL != "" && description != "" && quote != "") {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                        );
-                        BlocProvider.of<HomeBloc>(context).add(
-                          AddPerson(
+                      onPressed: () {
+                        if (imageURL != "" &&
+                            description != "" &&
+                            quote != "") {
+                          repository.editInspiringPerson(
                             InspiringPerson(
                                 image: imageURL,
                                 description: description,
                                 birthday: birthday,
                                 quote: quote),
-                          ),
-                        );
-                      }
-                    },
-                    child: Text("Save person"),
-                  );
+                          );
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()),
+                          );
+                        }
+                      },
+                      child: Text("Save edit"));
                 },
               ),
             )

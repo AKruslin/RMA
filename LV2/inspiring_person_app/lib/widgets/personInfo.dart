@@ -1,6 +1,6 @@
-
 import 'package:flutter/cupertino.dart';
-import 'package:inspiring_person_app/personRepository.dart';
+import 'package:flutter/material.dart';
+import 'package:inspiring_person_app/models/inspiringPerson.dart';
 import 'package:intl/intl.dart';
 
 class PersonInfo extends StatelessWidget {
@@ -17,7 +17,7 @@ class PersonInfo extends StatelessWidget {
       child: Column(
         children: [
           Text(DateFormat.yMMMd().format(person.birthday)),
-          Text(person.description)
+          Text(person.description),
         ],
       ),
     );

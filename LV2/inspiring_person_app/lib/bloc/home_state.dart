@@ -1,6 +1,8 @@
 part of 'home_bloc.dart';
 
-abstract class HomeState {}
+abstract class HomeState {
+  List<InspiringPerson> list;
+}
 
 class HomeInitial extends HomeState {
   List<InspiringPerson> list;

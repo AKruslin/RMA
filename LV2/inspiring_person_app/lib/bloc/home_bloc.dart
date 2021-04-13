@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:inspiring_person_app/models/inspiringPerson.dart';
 import 'package:inspiring_person_app/personRepository.dart';
 
 part 'home_event.dart';
@@ -9,7 +10,7 @@ part 'home_state.dart';
 var repository = PersonRepository();
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(HomeInitial(repository.inspiringPeopleList));
+  HomeBloc() : super(HomeInitial(repository.getInspiringPeopleList()));
 
   @override
   Stream<HomeState> mapEventToState(
@@ -17,7 +18,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async* {
     if (event is AddPerson) {
       repository.addInspiringPerson(event.newPerson);
-      yield ListUpdated(repository.inspiringPeopleList);
+      yield ListUpdated(repository.getInspiringPeopleList());
     }
   }
 }

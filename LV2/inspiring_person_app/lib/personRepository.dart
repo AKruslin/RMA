@@ -1,14 +1,7 @@
-class InspiringPerson {
-  String image;
-  DateTime birthday;
-  String description;
-  String quote;
-
-  InspiringPerson({this.image, this.birthday, this.description, this.quote});
-}
+import 'package:inspiring_person_app/models/inspiringPerson.dart';
 
 class PersonRepository {
-  List<InspiringPerson> inspiringPeopleList = [
+  List<InspiringPerson> _inspiringPeopleList = [
     InspiringPerson(
         image:
             "https://upload.wikimedia.org/wikipedia/commons/0/01/LinuxCon_Europe_Linus_Torvalds_03_%28cropped%29.jpg",
@@ -42,7 +35,26 @@ class PersonRepository {
 
   PersonRepository._internal();
 
+  List<InspiringPerson> getInspiringPeopleList() {
+    return _inspiringPeopleList;
+  }
+
   void addInspiringPerson(InspiringPerson person) {
-    inspiringPeopleList.add(person);
+    _inspiringPeopleList.add(person);
+  }
+
+  void deleteInspiringPerson(InspiringPerson person) {
+    _inspiringPeopleList.remove(person);
+  }
+
+  void editInspiringPerson(InspiringPerson person) {
+    _inspiringPeopleList.forEach((element) {
+      if (element.id == person.id) {
+        element.image = person.image;
+        element.description = person.description;
+        element.quote = person.quote;
+        element.birthday = person.birthday;
+      }
+    });
   }
 }
