@@ -90,11 +90,13 @@ class _EditPersonScreenState extends State<EditPersonScreen> {
                             description != "" &&
                             quote != "") {
                           repository.editInspiringPerson(
-                            InspiringPerson(
-                                image: imageURL,
-                                description: description,
-                                birthday: birthday,
-                                quote: quote),
+                            InspiringPerson.withID(
+                              person.id,
+                              imageURL,
+                              birthday,
+                              description,
+                              quote,
+                            ),
                           );
                           Navigator.pushReplacement(
                             context,
