@@ -17,11 +17,7 @@ class _AddDestinationScreenState extends State<AddDestinationScreen> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        leading: CupertinoNavigationBarBackButton(
-          previousPageTitle: "Back",
-        ),
-      ),
+      navigationBar: CupertinoNavigationBar(),
       child: SafeArea(
         child: SizedBox(
           child: Column(
