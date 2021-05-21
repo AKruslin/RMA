@@ -8,9 +8,7 @@ class DestinationDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        leading: CupertinoNavigationBarBackButton(
-          previousPageTitle: "Moje destinacije",
-        ),
+        previousPageTitle: "Moja Destinacija",
       ),
       child: SafeArea(
           child: Column(

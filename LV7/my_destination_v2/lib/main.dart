@@ -67,12 +67,17 @@ class _HomeState extends State<Home> {
                             ? Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: SizedBox(
-                                    height: 100,
-                                    width: 100,
-                                    child: Image.network(
-                                        destinationList[index].url)),
+                                  height: 100,
+                                  width: 100,
+                                  child:
+                                      Image.network(destinationList[index].url),
+                                ),
                               )
-                            : Container(),
+                            : Container(
+                                padding: const EdgeInsets.all(8.0),
+                                width: 120,
+                                height: 100,
+                              ),
                         Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[

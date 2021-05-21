@@ -1,16 +1,12 @@
-# my_destination_v1
+# my_destination_v2
 
-A new Flutter project.
+## Lista destinacija
+<img src="https://user-images.githubusercontent.com/70284063/118483452-4f263680-b716-11eb-96a7-ecf1f581d75a.png" width="200">
 
-## Getting Started
+## Brisanje destinacija
+<img src="https://user-images.githubusercontent.com/70284063/118483499-5fd6ac80-b716-11eb-8e94-9222f9d45748.png" width="200">
 
-This project is a starting point for a Flutter application.
+## Detaljni prikaz destinacije
+<img src="https://user-images.githubusercontent.com/70284063/118483460-52b9bd80-b716-11eb-9b55-1663c573d209.png" width="200">
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
