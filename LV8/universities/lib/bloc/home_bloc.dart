@@ -19,7 +19,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async* {
     if (event is FetchButtonPressed) {
       yield FetchingData();
-      //add wrong /path to cause error, example /userss
+      //add wrong /path to cause error, example /ssearch
       //http://universities.hipolabs.com/search?country=croatia
       var url = Uri.http(
           'universities.hipolabs.com', '/search', {"country": "croatia"});
